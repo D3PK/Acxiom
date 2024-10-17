@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="library mngmt.css"> 
+</head>
+<body>
+
+<h1>Library Management System</h1>
+
+<!-- Navigation Buttons to Toggle Sections -->
+<nav>
+    <button onclick="showSection('login')">Login</button>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('maintenance')">Maintenance</button>
+    <button onclick="showSection('reports')">Reports</button>
+    <button onclick="showSection('transactions')">Transactions</button>
+    <button onclick="showSection('chart')">Flow Chart</button>
+</nav>
+
+<!-- Login Section -->
+<div id="login" class="section active">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return validateLogin()" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+
+        <label>Select Role:</label><br>
+        <input type="radio" id="admin" name="role" value="admin">
+        <label for="admin">Admin</label><br>
+        <input type="radio" id="user" name="role" value="user">
+        <label for="user">User</label><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<!-- Dashboard Section -->
+<div id="dashboard" class="section">
+    <h2>Dashboard</h2>
+    <p>Welcome to the Library Management System!</p>
+    <ul>
+        <li><a href="#" onclick="showSection('transactions')">Transactions</a></li>
+        <li><a href="#" onclick="showSection('reports')">Reports</a></li>
+        <li><a href="#" onclick="showSection('maintenance')">Maintenance</a> (Admin Only)</li>
+    </ul>
+</div>
+
+<!-- Maintenance Section (Admin Only) -->
+<div id="maintenance" class="section">
+    <h2>Library Maintenance</h2>
+    <form id="bookForm" onsubmit="return validateBookForm()" method="post">
+        <label for="bookName">Book Name:</label>
+        <input type="text" id="bookName" name="bookName" placeholder="Enter book name" required><br><br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" placeholder="Enter author name" required><br><br>
+
+        <label for="available">Available for Borrow:</label>
+        <input type="checkbox" id="available" name="available" value="yes"> Yes<br><br>
+
+        <input type="submit" value="Add Book">
+    </form>
+</div>
+
+<!-- Reports Section -->
+<div id="reports" class="section">
+    <h2>Reports</h2>
+    <p>Here you can view various library reports.</p>
+    <ul>
+        <li>Borrowed Books Report: Book 1, Book 2</li>
+        <!-- Add more report details here -->
+    </ul>
+</div>
+
+<!-- Transactions Section -->
+<div id="transactions" class="section">
+    <h2>Transactions</h2>
+    <form id="transactionForm" onsubmit="return validateTransactionForm()" method="post">
+        <label for="bookId">Book ID:</label>
+        <input type="text" id="bookId" name="bookId" placeholder="Enter book ID" required><br><br>
+
+        <label>Transaction Type:</label><br>
+        <input type="radio" id="borrow" name="transaction" value="borrow">
+        <label for="borrow">Borrow</label><br>
+        <input type="radio" id="return" name="transaction" value="return">
+        <label for="return">Return</label><br><br>
+
+        <input type="submit" value="Submit Transaction">
+    </form>
+</div>
+
+<!-- Flow Chart Section -->
+<div id="chart" class="section">
+    <h2>Library Management System Flow Chart</h2>
+    <img src="flowchart.png" alt="Flow Chart of Library Management System" style="width:100%;max-width:600px;">
+</div>
+
+<!-- Error Message for Restricted Access -->
+<div id="error" class="section">
+    <h2>Error</h2>
+    <p>You do not have permission to access this section.</p>
+</div>
+
+<!-- Link to JavaScript file -->
+<script src="library mngmt.js"></script>
+
+</body>
+</html>
